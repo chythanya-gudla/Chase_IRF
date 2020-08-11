@@ -1,0 +1,163 @@
+ <table >
+               
+                <tr>
+                    <asp:CheckBoxList ID="RadioButtonListimages12" AutoPostBack="false" runat="server" RepeatDirection="Horizontal" AppendDataBoundItems="false"></asp:CheckBoxList>
+  
+
+                    </tr>
+
+                                <table class="auto-style4">
+                    <tr >
+                         <td class="auto-style20" >Quantity: </td><td class="auto-style12"><asp:TextBox ID="Q1" runat="server" Width="50px"></asp:TextBox></td>
+                         <td class="auto-style21" >Quantity: </td><td class="auto-style13"><asp:TextBox ID="Q2" runat="server" Width="50px"></asp:TextBox></td>
+                         <td class="auto-style18">Quantity: </td><td class="auto-style10"><asp:TextBox ID="Q3" runat="server" Width="50px"></asp:TextBox></td>
+                         <td class="auto-style20">Quantity: </td><td class="auto-style7"><asp:TextBox ID="Q4" runat="server" Width="50px"></asp:TextBox></td>
+                         <td class="auto-style21" >Quantity: </td><td class="auto-style14"><asp:TextBox  ID="Q5" runat="server" Width="50px"></asp:TextBox></td>
+                        
+
+                    </tr>
+                    
+                 <br />
+               </table> 
+                <table>
+                    <tr>
+                  <td class="auto-style20" ><asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize1"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false" Height="31px" Width="89px"></asp:CheckBoxList></td>
+               <td ></td> <td class="auto-style21"> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize2"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+                <td></td><td class="auto-style18"> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize3"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false" Width="70px"></asp:CheckBoxList></td>
+               <td></td><td class="auto-style20">  <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize4"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false" Width="80px"></asp:CheckBoxList></td>
+               <td></td> <td class="auto-style21" > <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize5"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+               </tr>
+                    </table>                 
+                     <br />
+                <table>
+                    <tr>
+                    <asp:CheckBoxList ID="RadioButtonListimages2" AutoPostBack="false" runat="server" RepeatDirection="Horizontal" RepeatColumns="5" AppendDataBoundItems="false"></asp:CheckBoxList>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox1" runat="server" Width="50px"></asp:TextBox></td>
+                    <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox2" runat="server" Width="50px"></asp:TextBox></td>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox3" runat="server" Width="50px"></asp:TextBox></td>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox4" runat="server" Width="50px"></asp:TextBox></td>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox5" runat="server" Width="50px"></asp:TextBox></td>
+                    </tr>
+                    </table>
+                    <tr>
+                    <Table>    
+                  <td><asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize6"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+                <td></td> <td> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize7"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+               <td></td> <td> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize8"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+              <td></td> <td>  <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize9"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+             <td></td>   <td> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize10"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+               
+                    </tr>
+                </Table>
+                <table>
+                    <tr>
+                    <asp:CheckBoxList ID="RadioButtonListimages3" AutoPostBack="false" runat="server" RepeatDirection="Horizontal" RepeatColumns="5" AppendDataBoundItems="false"></asp:CheckBoxList>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox6" runat="server" Width="50px"></asp:TextBox></td>
+                    <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox7" runat="server" Width="50px"></asp:TextBox></td>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox8" runat="server" Width="50px"></asp:TextBox></td>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox9" runat="server" Width="50px"></asp:TextBox></td>
+                        <td class="auto-style5">Quantity: </td><td class="auto-style9"><asp:TextBox  ID="TextBox10" runat="server" Width="50px"></asp:TextBox></td>
+                    </tr>
+                    </table>
+                  <table> <tr>
+                        
+                  <td><asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize11"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+                <td></td><td> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize12"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+                <td></td><td> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize13"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+               <td></td><td>  <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize14"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+                <td></td><td> <asp:CheckBoxList Font-Size="Smaller" ID="RadioButtonListsize15"  AutoPostBack="false" runat="server" RepeatDirection="Vertical" AppendDataBoundItems="false"></asp:CheckBoxList></td>
+               
+                    </tr>
+                      </table> 
+                
+                    <tr>
+                       
+<%--                        <td>
+Selected Values:
+                        </td>--%>
+                        <tr>
+<td>
+                            <asp:HiddenField ID="lblPosterDetailsId" runat="server"/>
+                            <span id="lblPosterDetails" runat="server"></span>
+<%--<input  type="text" id="lblPosterDetails" runat="server" rows="2"  column="50" readonly="true" />--%>
+                        </td>
+
+                        </tr>
+                        </tr>
+                    </table>
+
+                <br /><br />
+                <table>
+                     <tr>
+                <td align="right">Ship to Practice Address:</td><td><asp:RadioButtonList ID="rblShipTo" runat="server" RepeatDirection="Horizontal" Width="229px"></asp:RadioButtonList></td><td align="right">Print Ads Requested:</td><td class="auto-style1"><asp:CheckBox ID="chbPrintAds" Enabled="true" runat="server" /></td>
+                         
+            </tr>
+                    </table>
+ 
+
+
+
+
+
+
+System.Data.SqlClient.SqlException was unhandled by user code
+  Class=16
+  ErrorCode=-2146232060
+  HResult=-2146232060
+  LineNumber=0
+  Message=Procedure or function spReturnItemList has too many arguments specified.
+  Number=8144
+  Procedure=spReturnItemList
+  Server=pgmdev
+  Source=.Net SqlClient Data Provider
+  State=2
+  StackTrace:
+       at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+       at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+       at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+       at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+       at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+       at System.Data.SqlClient.SqlDataReader.get_MetaData()
+       at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+       at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+       at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+       at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+       at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+       at System.Data.SqlClient.SqlCommand.ExecuteReader()
+       at Chase_IRF.DataClass.ReturnItemList() in C:\Users\dt5599\Downloads\Teja Chase IRF_02Sept\Chase IRF\Chase IRF\DataClass.cs:line 297
+       at Chase_IRF.Home.Page_Load(Object sender, EventArgs e) in C:\Users\dt5599\Downloads\Teja Chase IRF_02Sept\Chase IRF\Chase IRF\Home.aspx.cs:line 16
+       at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+       at System.Web.UI.Control.OnLoad(EventArgs e)
+       at System.Web.UI.Control.LoadRecursive()
+       at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+  InnerException: 
+
+-----------------------------------------------------
+
+
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <asp:TextBox id="userid" class="input" required="" placeholder="User Name" runat="server"/>
+                        <%--<input id="userid" type="text" class="input" required="" placeholder="User Name"/> --%>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <%--<input id="password" type="password" class="input" data-type="password" required="" placeholder="Password"/> --%>
+                        <asp:TextBox id="password" class="input" required="" TextMode="Password" placeholder="Password" runat="server"/>
+                    </div>
+                    <%--<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				    </div>--%>
+                    <div class="group">
+                        <%-- <input type="submit" class="button" value="Sign In" onClick="userSignIn()"/>--%>
+                        <asp:Button class="button" id="btnUserSignIn" OnClick="btnUserSignIn_Click" value="Sign In" runat="server" Text="Sign In" ToolTip="Sign In"/>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
