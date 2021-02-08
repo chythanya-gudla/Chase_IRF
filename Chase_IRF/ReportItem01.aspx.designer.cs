@@ -10,16 +10,16 @@
 namespace Chase_IRF {
     
     
-    public partial class ReportItem01   {
+    public partial class ReportItem01 {
         
         /// <summary>
-        /// reportform control.
+        /// Form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm reportform;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
         /// ScriptManager1 control.

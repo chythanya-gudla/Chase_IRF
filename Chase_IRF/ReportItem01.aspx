@@ -11,11 +11,11 @@
     <script type="text/javascript" src="/scripts/NewIRFScript.js"></script>
     <script src="scripts/jquery-ui.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
-<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"   rel="Stylesheet" type="text/css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
-     <style>
+    <style>
         .required {
             color: red;
         }
@@ -24,33 +24,26 @@
             color: transparent;
         }
 
-         .user-form .field input {
-                display: inline-block;
-                min-height: 36px !important;
-                border: 3px #ededed !important;
-                border-radius: 0;
-                
-            }
+        .user-form .field input {
+            display: inline-block;
+            min-height: 36px !important;
+            border: 3px #ededed !important;
+            border-radius: 0;
+        }
     </style>
     <link href="css/datepicker.css" rel="stylesheet" />
     <link href="css/NewIRFcss.css" rel="stylesheet" />
 
-
-    <%--<form data-toggle="validator" id="reportform" role="form" enctype="multipart/form-data" runat="server" style="max-width:600px">--%>
-      
-            <div class="container"id="reportListDiv" style="height: 968px">
-               <div class="newIrf-wrap" style="width: 125%; max-width: 1600px; overflow : scroll;margin-left:-12%;max-height:860px;">
-                <form id="Form1" role="form" runat="server">
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <%--<rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" ProcessingMode="Remote" Height="100%" Width="1225px" SizeToReportContent="true">--%>
-             <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" ProcessingMode="Remote" Width="100%" Height="100%" FixedData="true" SizeToReportContent="true" >
-                <ServerReport  />
-            </rsweb:ReportViewer>
+    <div class="container" id="reportListDiv" style="height: 968px">
+        <div class="newIrf-wrap" style="width: 100%; max-width: 1600px; overflow :scroll; max-height: 860px;">
+            <form id="Form1" role="form" runat="server" style="width:100%; height:100%;">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" ProcessingMode="Remote" Width="100%" Height="100%" FixedData="true" SizeToReportContent="true">
+                    <ServerReport />
+                </rsweb:ReportViewer>
             </form>
-       
-            </div>
-        </div>
 
-  <%--  </form>--%>
+        </div>
+    </div>
 
 </asp:Content>

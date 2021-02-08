@@ -39,7 +39,7 @@
       <%--<form data-toggle="validator" id="reportform" role="form" enctype="multipart/form-data" runat="server" style="max-width:600px">--%>
       
             <div class="container"id="reportListDiv" style="height: 968px">
-               <div class="newIrf-wrap" style="width: 114%; max-width: 1600px; overflow : scroll;margin-left:-10%;max-height:860px;">
+               <div class="newIrf-wrap" style="width: 100%; max-width: 1600px; overflow : scroll; max-height:860px;">
                 <form id="Form1" role="form" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <%--<rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" ProcessingMode="Remote" Height="100%" Width="1225px" SizeToReportContent="true">--%>

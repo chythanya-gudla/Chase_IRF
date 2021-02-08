@@ -49,7 +49,7 @@
         .home-wrap {
             width: 100%;
             margin: auto;
-            max-width: 1310px;
+            max-width: 1246px;
             min-height: 670px;
             position: relative;
             box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -96,9 +96,13 @@
             width: 80%;
         }
 
-        .container{
-            width: 1300px !important;
+        .row {
+            margin-left: 0px !important;
         }
+
+        /*.container{
+            width: 1300px !important;
+        }*/
     </style>
     <%-- <script src="scripts/jquery-1.12.4.js"></script>
     <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>--%>

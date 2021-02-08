@@ -18,8 +18,9 @@
             max-width: 525px;
             min-height: 500px;
             position: relative;
-            background: url(images/Chase.png) no-repeat center;
+            background: url(images/chaseBackgroung.jpg) no-repeat center;
             box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+            background-size: 450px;
         }
     </style>
 </head>

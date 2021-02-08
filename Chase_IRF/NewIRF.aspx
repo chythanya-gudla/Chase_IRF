@@ -116,6 +116,11 @@
 
     </script>
     <style>
+
+        body {
+            background: #f5f5f5 !important;
+        }
+
         .required {
             color: red;
         }
@@ -139,7 +144,6 @@
         }
 
         .btnIRF {
-            height: 35px;
             vertical-align: top;
             width: 10%;
             border-radius: 25px;
