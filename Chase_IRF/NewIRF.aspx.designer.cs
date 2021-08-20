@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Chase_IRF {
-    
-    
-    public partial class NewIRF {
-        
+namespace Chase_IRF
+{
+
+
+    public partial class NewIRF
+    {
+
         /// <summary>
         /// contactinfoform control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm contactinfoform;
-        
+
         /// <summary>
         /// SubmitterName control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText SubmitterName;
-        
+
         /// <summary>
         /// SelectItemOwnerName control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect SelectItemOwnerName;
-        
+
         /// <summary>
         /// SubmitterEmailID control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl SubmitterEmailID;
-        
+
         /// <summary>
         /// ItemOwnerEmailID control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl ItemOwnerEmailID;
-        
+
         /// <summary>
         /// SelectItem control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect SelectItem;
-        
+
         /// <summary>
         /// ItemNumber control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText ItemNumber;
-        
+
         /// <summary>
         /// btnReplace control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnReplace;
-        
+
         /// <summary>
         /// CheckDelete control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox CheckDelete;
-        
+
         /// <summary>
         /// ItemDescription control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText ItemDescription;
-        
+
         /// <summary>
         /// IPAriba control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton IPAriba;
-        
+
         /// <summary>
         /// IPOneBox control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton IPOneBox;
-        
+
         /// <summary>
         /// IPOneBoxAriba control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton IPOneBoxAriba;
-        
+
         /// <summary>
         /// IPSpecial control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton IPSpecial;
-        
+
         /// <summary>
         /// IPSpecialAriba control.
         /// </summary>
@@ -146,7 +148,25 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton IPSpecialAriba;
-        
+
+        /// <summary>
+        /// SetupLimitDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SetupLimitDiv;
+
+        /// <summary>
+        /// SetupLimit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox SetupLimit;
+
         /// <summary>
         /// SelectGroup control.
         /// </summary>
@@ -155,7 +175,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect SelectGroup;
-        
+
         /// <summary>
         /// DistributionRuleText control.
         /// </summary>
@@ -164,7 +184,16 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText DistributionRuleText;
-        
+
+        /// <summary>
+        /// Notes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea Notes;
+
         /// <summary>
         /// filedownload control.
         /// </summary>
@@ -172,8 +201,8 @@ namespace Chase_IRF {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText filedownload;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor filedownload;
+
         /// <summary>
         /// CostCenter control.
         /// </summary>
@@ -182,7 +211,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText CostCenter;
-        
+
         /// <summary>
         /// UofM control.
         /// </summary>
@@ -191,7 +220,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect UofM;
-        
+
         /// <summary>
         /// Quantity control.
         /// </summary>
@@ -200,7 +229,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Quantity;
-        
+
         /// <summary>
         /// ProdCost control.
         /// </summary>
@@ -209,7 +238,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText ProdCost;
-        
+
         /// <summary>
         /// UnitLength control.
         /// </summary>
@@ -218,7 +247,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText UnitLength;
-        
+
         /// <summary>
         /// UnitWidth control.
         /// </summary>
@@ -227,7 +256,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText UnitWidth;
-        
+
         /// <summary>
         /// UnitHeight control.
         /// </summary>
@@ -236,7 +265,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText UnitHeight;
-        
+
         /// <summary>
         /// ItemWeight control.
         /// </summary>
@@ -245,7 +274,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText ItemWeight;
-        
+
         /// <summary>
         /// ExpectedQuantity control.
         /// </summary>
@@ -254,7 +283,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText ExpectedQuantity;
-        
+
         /// <summary>
         /// ExpectedArrival control.
         /// </summary>
@@ -263,7 +292,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ExpectedArrival;
-        
+
         /// <summary>
         /// PrimaryVendor control.
         /// </summary>
@@ -272,7 +301,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect PrimaryVendor;
-        
+
         /// <summary>
         /// LowWaterPoint control.
         /// </summary>
@@ -281,7 +310,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText LowWaterPoint;
-        
+
         /// <summary>
         /// OneBoxID control.
         /// </summary>
@@ -290,7 +319,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect OneBoxID;
-        
+
         /// <summary>
         /// SelectBool control.
         /// </summary>
@@ -299,7 +328,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList SelectBool;
-        
+
         /// <summary>
         /// specifyQuantityandDate control.
         /// </summary>
@@ -308,7 +337,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl specifyQuantityandDate;
-        
+
         /// <summary>
         /// StarterBoxQuantity control.
         /// </summary>
@@ -317,7 +346,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText StarterBoxQuantity;
-        
+
         /// <summary>
         /// ExpireDate control.
         /// </summary>
@@ -326,7 +355,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ExpireDate;
-        
+
         /// <summary>
         /// DateToBeAdded control.
         /// </summary>
@@ -335,7 +364,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DateToBeAdded;
-        
+
         /// <summary>
         /// viewableOnlyCheckbox control.
         /// </summary>
@@ -344,7 +373,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox viewableOnlyCheckbox;
-        
+
         /// <summary>
         /// DateToBeRemoved control.
         /// </summary>
@@ -353,7 +382,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DateToBeRemoved;
-        
+
         /// <summary>
         /// SupersededItem control.
         /// </summary>
@@ -362,7 +391,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText SupersededItem;
-        
+
         /// <summary>
         /// RetailPrice control.
         /// </summary>
@@ -371,7 +400,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText RetailPrice;
-        
+
         /// <summary>
         /// MaxOrderQuantity control.
         /// </summary>
@@ -380,7 +409,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText MaxOrderQuantity;
-        
+
         /// <summary>
         /// SelectSubCategory control.
         /// </summary>
@@ -389,7 +418,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect SelectSubCategory;
-        
+
         /// <summary>
         /// btnSubmit control.
         /// </summary>
@@ -398,7 +427,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSubmit;
-        
+
         /// <summary>
         /// btnCancel control.
         /// </summary>

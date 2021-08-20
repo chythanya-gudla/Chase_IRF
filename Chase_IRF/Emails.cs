@@ -100,7 +100,7 @@ namespace Chase_IRF
 
                 //  Get Owner Info
                 string OwnName = string.Empty;
-              //  string OwnLastName = string.Empty;
+                //  string OwnLastName = string.Empty;
                 string OwnEMail = string.Empty;
                 string OPCustomer = "This Item Owner does not exist";
                 int owner = Convert.ToInt32(ItemOwner);
@@ -108,13 +108,13 @@ namespace Chase_IRF
                 itemOwnersInfo = DC.GetItemOwners();
                 foreach (DataRow itemOwnersRow in itemOwnersInfo.Rows)
                 {
-                    
+
                     if (ItemOwner == Convert.ToInt32(itemOwnersRow["OPCustomer"]))
                     {
-                    OPCustomer = itemOwnersRow["OPCustomer"].ToString();
-                    OwnName = itemOwnersRow["OwnerName"].ToString();
-                    //OwnLastName = itemOwnersRow["OwnerName"].ToString();
-                    OwnEMail = itemOwnersRow["EMail"].ToString();
+                        OPCustomer = itemOwnersRow["OPCustomer"].ToString();
+                        OwnName = itemOwnersRow["OwnerName"].ToString();
+                        //OwnLastName = itemOwnersRow["OwnerName"].ToString();
+                        OwnEMail = itemOwnersRow["EMail"].ToString();
                     }
                 }
 
@@ -244,7 +244,7 @@ namespace Chase_IRF
                 {
                     StarterExpire = string.Empty;
                 }
-                 
+
                 if (ActiveDate != "1900-01-01")
                 {
                     ActiveDate = ActiveDate.Substring(5, 2) + "/" + ActiveDate.Substring(8, 2) + "/" + ActiveDate.Substring(0, 4);
@@ -261,6 +261,15 @@ namespace Chase_IRF
                 else
                 {
                     ExpireDate = string.Empty;
+                }
+
+                if (ExpectedArrival != "1900-01-01")
+                {
+                    ExpectedArrival = ExpectedArrival.Substring(5, 2) + "/" + ExpectedArrival.Substring(8, 2) + "/" + ExpectedArrival.Substring(0, 4);
+                }
+                else
+                {
+                    ExpectedArrival = string.Empty;
                 }
 
                 //  Edit decimal quantities
@@ -301,13 +310,14 @@ namespace Chase_IRF
 "<tr><td>Item number: " + ItemNumber + "</td> " +
 "<td colspan=\"2\">Description: " + ItemDescription + "</td></tr> " +
 "<tr><td>Item purpose: " + ItemPurpose + "</td> " +
-"<td colspan=\"2\">Special Delivery Date: " + SpecDistDelivery +"</td></tr> " +
+"<td colspan=\"2\">Expected Arrival Date: " + ExpectedArrival + "</td></tr> " +
 "<tr><td colspan=\"3\">Item category: " + ProductGroup + "</tr> " +
 "<tr><td colspan=\"3\">&nbsp;</td></tr> " +
-"<tr><td>Business case cost center: " + ItemCostCtr + "</td> " +
+"<tr><td>Cost Center: " + ItemCostCtr + "</td> " +
 "<td>Production Cost : " + StockUOM + " $" + LastCost + "</td> " +
 "<td>Unit of Measure: " + StockUOM + "</td></tr> " +
-"<tr><td colspan=\"3\">Low water point: " + MinStockLvl + "</td></tr> " +
+"<tr><td colspan=\"2\">Low water point: " + MinStockLvl + "</td> " +
+"<td>Quantity per Unit of Measure: " + QuantityUOM + "</td></tr> " +
 "<tr><td colspan=\"3\">&nbsp;</td></tr> " +
 "<tr><td colspan=\"3\"><b>Item Dimensions</b><td></tr> " +
 "<tr><td colspan=\"3\">Length: " + Length + "&nbsp;&nbsp;&nbsp; " +
@@ -326,7 +336,7 @@ namespace Chase_IRF
                     emailbodystring += "<tr><td colspan=\"3\">" + B[3].ToString() + "</td></tr> ";
                     if (B[4].ToString() != "" && B[4].ToString() != null)
                     {
-                        emailbodystring += "<tr><td colspan=\"3\">Attached File: " + B[4].ToString() + "</td></tr> ";
+                        emailbodystring += "<tr><td colspan=\"3\">Custom List: " + B[4].ToString() + "</td></tr> ";
                     }
                 }
 
@@ -346,12 +356,12 @@ namespace Chase_IRF
                 "<td>Maximum order quantity: " + MaxOrdQuantity + "</td> " +
                 "<td>Ariba sub-category: " + ProductSubGroup + "</td></tr>' " +
                 "</table></body></html> ";
-                
+
 
                 //  Over Ride submitter's email to Darcy and send Bcc to AM Team
                 emailresult = DC.NewItemNotification(clientid, ItemNumber, ItemOwner,
                                SbmFirstName + " " + SbmLastName, "Reports@epiinc.com", OwnEMail,
-                               "darcy.c.hall@chase.com", "ChaseAMTeam@epiinc.com", 
+                               "darcy.c.hall@chase.com", "ChaseAMTeam@epiinc.com",
                                "Item " + ItemNumber + " Submitted", emailbodystring);
                 return emailresult;
             }
@@ -359,7 +369,7 @@ namespace Chase_IRF
         }
         public Boolean SendEmailNotification(int emailuid)
         {
-            EmailClass EC = new EmailClass(); 
+            EmailClass EC = new EmailClass();
             DataClass returnresult = new DataClass();
 
             bool HTML = true;
@@ -432,38 +442,38 @@ namespace Chase_IRF
 
 
 }
-    //public class EmailClass
-    //{
-    //    public int SendEmail(string body, string ToAddress, string Subject, bool HTML)
-    //    {
-    //        try
-    //        {
-    //            //Initilize Email
-    //            MailMessage newmail = new MailMessage();
-    //            SmtpClient client = new SmtpClient();
-    //            client.Port = 25;
-    //          //  client.Host = "10.0.21.10";
-    //            client.Host = "172.21.3.182"; 
-    //            client.Timeout = 10000;
-    //            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-    //            client.UseDefaultCredentials = true;
+//public class EmailClass
+//{
+//    public int SendEmail(string body, string ToAddress, string Subject, bool HTML)
+//    {
+//        try
+//        {
+//            //Initilize Email
+//            MailMessage newmail = new MailMessage();
+//            SmtpClient client = new SmtpClient();
+//            client.Port = 25;
+//          //  client.Host = "10.0.21.10";
+//            client.Host = "172.21.3.182"; 
+//            client.Timeout = 10000;
+//            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+//            client.UseDefaultCredentials = true;
 
 
-    //            //Add Fields and Send
-    //            newmail.From = (new MailAddress("d_teja@epiinc.com"));
-    //            newmail.To.Add(new MailAddress(ToAddress));
-    //            //newmail.To.Add(new MailAddress("e_ours@epiinc.com"));
-    //            newmail.Subject = Subject;
-    //            newmail.Body = body;
-    //            newmail.IsBodyHtml = HTML;
-    //            client.Send(newmail);
+//            //Add Fields and Send
+//            newmail.From = (new MailAddress("d_teja@epiinc.com"));
+//            newmail.To.Add(new MailAddress(ToAddress));
+//            //newmail.To.Add(new MailAddress("e_ours@epiinc.com"));
+//            newmail.Subject = Subject;
+//            newmail.Body = body;
+//            newmail.IsBodyHtml = HTML;
+//            client.Send(newmail);
 
-    //            return 1;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            return 2;
-    //        }
+//            return 1;
+//        }
+//        catch (Exception ex)
+//        {
+//            return 2;
+//        }
 
-    //    }
-    //}
+//    }
+//}

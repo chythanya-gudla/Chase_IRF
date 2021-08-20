@@ -12,7 +12,7 @@
                 buttonImageOnly: true,
                 buttonImage: 'images/calendar.png'
             });
-           $("[id$=DateToBeAdded]").datepicker({
+            $("[id$=DateToBeAdded]").datepicker({
                 showOn: 'button',
                 buttonImageOnly: true,
                 buttonImage: 'images/calendar.png'
@@ -27,18 +27,18 @@
                 buttonImageOnly: true,
                 buttonImage: 'images/calendar.png'
             });
-//            $("[id$=SpecDistDelivery]").datepicker({
-//                showOn: 'button',
-//                buttonImageOnly: true,
-//                buttonImage: 'images/calendar.png'
-//            });
+            //            $("[id$=SpecDistDelivery]").datepicker({
+            //                showOn: 'button',
+            //                buttonImageOnly: true,
+            //                buttonImage: 'images/calendar.png'
+            //            });
         });
 
         $(function specialDistributionDate() {
             $('input[name="IPSpecial"]').on('change', function () {
                 if ($(this).val() == 'Yes') {
                     $("#SpecDistDelivery").prop('disabled', true);
-               } else {
+                } else {
                     $("#SpecDistDelivery").prop('disabled', true);
                 }
             });
@@ -113,20 +113,14 @@
         //        //alert('The file "' + fileName + '" has been selected.');
         //    });
         //});
-
     </script>
     <style>
-
         body {
             background: #f5f5f5 !important;
         }
 
         .required {
             color: red;
-        }
-
-        input[type='file'] {
-            color: transparent;
         }
 
         .user-form .field input {
@@ -180,12 +174,12 @@
         }
 
         select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background: url(https://cloud.githubusercontent.com/assets/7913347/20338079/3e020c9a-abee-11e6-8e5a-ca49c55b22ee.png) right / 20px no-repeat #fff;
-        padding-right: 20px;
-}
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: url(https://cloud.githubusercontent.com/assets/7913347/20338079/3e020c9a-abee-11e6-8e5a-ca49c55b22ee.png) right / 20px no-repeat #fff;
+            padding-right: 20px;
+        }
     </style>
     <link href="css/datepicker.css" rel="stylesheet" />
     <link href="css/NewIRFcss.css" rel="stylesheet" />
@@ -232,7 +226,7 @@
                             </div>
                             <div class="field">
                                 <label style="height: 32px;" for="inputName">Item Number:<span class="required"> *</span></label>
-                                <input type="text" runat="server" class="form-control formField" id="ItemNumber" required="required" maxlength="21"/>
+                                <input type="text" runat="server" class="form-control formField" id="ItemNumber" required="required" maxlength="21" />
                                 <button id="btnReplace" type="button" class="btn-primary btnIRF" onclick="ReplaceItemExists()" runat="server">Copy Item</button>
                                 <label for="inputName" runat="server" class="text-right">Delete Item</label>
                                 <input type="checkbox" id="CheckDelete" runat="server" class="chechbox" />
@@ -265,7 +259,12 @@
                                 </asp:RadioButton><label for="IPSpecialAriba" style="width: 210px; visibility: hidden">Special Distribution and Ariba</label>
 
                             </div>
-<%--                            <div class="field" >
+                            <div class="field" runat="server" id="SetupLimitDiv">
+                                <label for="inputName">Setup Order Limit:</label>
+                                <input type="checkbox" id="SetupLimit" class="chechbox" runat="server" />
+                            </div>
+
+                            <%--                            <div class="field" >
                                 <label for="inputName" class="control-label" style="visibility: hidden">
                                     Special Distribution Delivery Date:<br />
                                     <span style="font-size: 80%;visibility: hidden">If Special Distribution/Special Distribution and Ariba are selected, please provide the Delivery Date</span></label>
@@ -287,59 +286,65 @@
 
                             </div>
                             <div class="field">
+                                <label for="inputName" class="control-label">Notes:</label>
+                                <textarea id="Notes" class="form-control formField" runat="server" maxlength="255" style="display: initial;"></textarea>
+                            </div>
+                            <div class="field">
                                 <label for="inputName" class="control-label" style="width: 25%;">Upload a Custom List:</label>
-                                <input type="file" id="distributionrule" name="distributionrule"  style="width: 150px; height: 40px; border: 5px; border-radius: 0px;" />
+                                <input type="file" id="distributionrule" name="distributionrule" style="height: 40px; border-radius: 0px;"/>
+                            </div>
+                            <div class="field">
                                 <label for="inputName" class="control-label">Uploaded Custom List (if any):</label>
-                                <input type="text" id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" readonly="readonly" disabled="disabled" />
+                                <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" readonly="readonly" disabled="disabled" />
                                 <input type="text" id="RulesFile" style="text-align: left;" readonly="readonly" disabled="disabled" />
-                               <%-- <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" disabled="disabled"/>
+                                <%-- <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" disabled="disabled"/>
                                 <input type="text" id="RulesFile" runat="server" style="text-align: left;" readonly="readonly" disabled="disabled"/>--%>
                             </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label" style="margin-bottom: 16px;">Cost Center:</label>
-                                <input type="text" runat="server" class="form-control formField" id="CostCenter" />
+                        <div class="field">
+                            <label for="inputName" class="control-label" style="margin-bottom: 16px;">Cost Center:</label>
+                            <input type="text" runat="server" class="form-control formField" id="CostCenter" />
+                        </div>
+                        <div class="field">
+                            <label for="inputName" class="control-label">Unit Of Measure:</label>
+                            <select id="UofM" class="dropdownIRF" runat="server"></select>
+                        </div>
+                        <div class="field">
+                            <label for="inputName" style="height: 32px;" class="control-label">Quantity per Unit of Measure:</label>
+                            <input type="text" runat="server" placeholder="0-9 only" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" class="form-control formField" id="Quantity" />
+                        </div>
+                        <div class="field">
+                            <label for="inputName" style="height: 32px;" class="control-label">Production Cost per Unit of Measure in US Dollars:</label>
+                            <div class="dollar">
+                                <input type="text" style="width: 50%" runat="server" placeholder="0.0000" onkeypress="return isNumberKey(event)" id="ProdCost" />
                             </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label">Unit Of Measure:</label>
-                                <select id="UofM" class="dropdownIRF" runat="server"></select>
-                            </div>
-                            <div class="field">
-                                <label for="inputName" style="height: 32px;" class="control-label">Quantity per Unit of Measure:</label>
-                                <input type="text" runat="server" placeholder="0-9 only" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" class="form-control formField" id="Quantity" />
-                            </div>
-                            <div class="field">
-                                <label for="inputName" style="height: 32px;" class="control-label">Production Cost per Unit of Measure in US Dollars:</label>
-                                <div class="dollar">
-                                    <input type="text" style="width: 50%" runat="server" placeholder="0.0000" onkeypress="return isNumberKey(event)" id="ProdCost" />
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="inputName" style="vertical-align: bottom;" class="control-label">Unit Dimensions(L*W*H of finished package) In Inches:</label>
+                        </div>
+                        <div class="field">
+                            <label for="inputName" style="vertical-align: bottom;" class="control-label">Unit Dimensions(L*W*H of finished package) In Inches:</label>
 
-                                <input id="UnitLength" title="UnitLength" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
-                                <input id="UnitWidth" title="UnitWidth" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
-                                <input id="UnitHeight" title="UnitHeight" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
-                            </div>
-                            <div class="field">
-                                <label for="inputName" style="height: 32px;" class="control-label">Weight Of Item In Pounds:</label>
-                                <input title="ItemWeight" placeholder="0.000" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ItemWeight" />
-                            </div>
-                            <div class="field">
-                                <label for="inputName" style="height: 32px;" class="control-label">Total Quantity Delivering to EPI:</label>
-                                <input type="text" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ExpectedQuantity" />
-                            </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label">Expected Arrival Date:</label>
-                                <asp:TextBox ID="ExpectedArrival" class="datepickerIRF" runat="server" placeholder="mm/dd/yyyy"></asp:TextBox>
-                            </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label">Item Vendor:</label>
-                                <select class="dropdownIRF" id="PrimaryVendor" runat="server"></select>
-                            </div>
-                            <div class="field">
-                                <label for="inputName" style="height: 32px;" class="control-label">Low Water Point:</label>
-                                <input title="LowWaterPoint" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="LowWaterPoint" />
-                            </div>
+                            <input id="UnitLength" title="UnitLength" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
+                            <input id="UnitWidth" title="UnitWidth" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
+                            <input id="UnitHeight" title="UnitHeight" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
+                        </div>
+                        <div class="field">
+                            <label for="inputName" style="height: 32px;" class="control-label">Weight Of Item In Pounds:</label>
+                            <input title="ItemWeight" placeholder="0.000" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ItemWeight" />
+                        </div>
+                        <div class="field">
+                            <label for="inputName" style="height: 32px;" class="control-label">Total Quantity Delivering to EPI:</label>
+                            <input type="text" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ExpectedQuantity" />
+                        </div>
+                        <div class="field">
+                            <label for="inputName" class="control-label">Expected Arrival Date:</label>
+                            <asp:TextBox ID="ExpectedArrival" class="datepickerIRF" runat="server" placeholder="mm/dd/yyyy"></asp:TextBox>
+                        </div>
+                        <div class="field">
+                            <label for="inputName" class="control-label">Item Vendor:</label>
+                            <select class="dropdownIRF" id="PrimaryVendor" runat="server"></select>
+                        </div>
+                        <div class="field">
+                            <label for="inputName" style="height: 32px;" class="control-label">Low Water Point:</label>
+                            <input title="LowWaterPoint" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="LowWaterPoint" />
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -365,7 +370,7 @@
                                     <asp:ListItem value="N">No</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <div id="specifyQuantityandDate" runat="server" style="display:none">
+                            <div id="specifyQuantityandDate" runat="server" style="display: none">
                                 <div class="field">
                                     <label for="starterboxquantity" style="height: 32px;" class="control-label">If yes, specify quantity:</label>
                                     <input type="text" runat="server" placeholder="0-9 only" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" class="form-control formField" id="StarterBoxQuantity" />
@@ -392,7 +397,7 @@
                             <div class="field">
                                 <label for="inputName" class="control-label">Date to be added:</label>
                                 <asp:TextBox ID="DateToBeAdded" runat="server" class="datepickerIRF" placeholder="mm/dd/yyyy"></asp:TextBox>
-                                 <label for="inputName" class="text-right">Viewable Only</label>
+                                <label for="inputName" class="text-right">Viewable Only</label>
                                 <input type="checkbox" id="viewableOnlyCheckbox" class="chechbox" runat="server" />
                             </div>
                             <div class="field">

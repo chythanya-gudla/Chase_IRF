@@ -21,7 +21,6 @@ namespace Chase_IRF
         {
             Page.MaintainScrollPositionOnPostBack = true;
 
-
             if (!IsPostBack)
             {
 
@@ -36,18 +35,7 @@ namespace Chase_IRF
                 string idencrypted = Request.QueryString["userid"];
                 var id = Spritz.EPIDecrypt(idencrypted, encryptionkey);
 
-                //if (validatedtime >= DateTime.Now.AddMinutes(-1))
-                //{
-
-                //if (IPSpecial.Checked == true)
-                //{
-                //    SpecDistDelivery.ReadOnly = false;
-                //}
-                //else
-                //{
-                //    SpecDistDelivery.ReadOnly = true;
-                //}
-
+                SetupLimitDiv.Visible = false;
                 btnSubmit.EnableViewState = false;
                 SubmitterName.Value = Session["fullname"] != null ? Convert.ToString(Session["fullname"]) : "";
                 SubmitterEmailID.Value = Session["EmailId"] != null ? Convert.ToString(Session["EmailId"]) : "";
@@ -115,8 +103,6 @@ namespace Chase_IRF
                 fillVendors();
                 fillOneBoxID();
                 fillUnitOfMeasure();
-                
-
 
                 string ItemValueId = Convert.ToString(Request.QueryString["ItemValue"]);
                 string ItemType = Convert.ToString(Request.QueryString["ItemType"]);
@@ -320,7 +306,26 @@ namespace Chase_IRF
 
                         //  Set Viewable only CheckBox
                         if (dt.Rows[0].ItemArray[18].ToString() == "Y")
-                        { viewableOnlyCheckbox.Checked = true; }
+                        { 
+                            viewableOnlyCheckbox.Checked = true; 
+                        }
+
+                        if (dt.Rows[0].ItemArray[19].ToString() == "A" || dt.Rows[0].ItemArray[19].ToString() == "P" || dt.Rows[0].ItemArray[19].ToString() == "T")
+                        {
+                            SetupLimitDiv.Visible = true;
+                            if (dt.Rows[0].ItemArray[40].ToString() == "Y")
+                            {
+                                SetupLimit.Checked = true;
+                            }
+                            else if (dt.Rows[0].ItemArray[40].ToString() == "N")
+                            {
+                                SetupLimit.Checked = false;
+                            }
+                        }
+                        else
+                        {
+                            SetupLimitDiv.Visible = false;
+                        }
 
                         if (ItemType != "replaceditem")
                         {
@@ -435,10 +440,11 @@ namespace Chase_IRF
                         //MaxOrderQuantity.Value = dt.Rows[0].ItemArray[39].ToString();
 
                         DistributionRuleText.Value = dt.Rows[0].ItemArray[63].ToString();
+                        Notes.Value = dt.Rows[0].ItemArray[67].ToString();
                         if ((!string.IsNullOrWhiteSpace(dt.Rows[0].ItemArray[64].ToString())) && (ItemType != "replaceditem"))
                         {
                             //RulesFile.Value = dt.Rows[0].ItemArray[64].ToString();
-                            filedownload.Value = dt.Rows[0].ItemArray[64].ToString();
+                            filedownload.InnerText = dt.Rows[0].ItemArray[64].ToString();
                             string filePath = Convert.ToString(ConfigurationManager.AppSettings["filepath"]);
                            // filedownload.HRef = filedownload.Value;
                         }
@@ -494,25 +500,37 @@ namespace Chase_IRF
                 if (IPAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = false;
+
+                    SetupLimitDiv.Visible = true;
                 }
                 if (IPOneBox.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = true;
                     viewableOnlyCheckbox.Checked = false;
+
+                    SetupLimitDiv.Visible = false;
+                    SetupLimit.Checked = false;
                 }
                 if (IPOneBoxAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = false;
+
+                    SetupLimitDiv.Visible = true;
                 }
                 if (IPSpecial.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = true;
                     viewableOnlyCheckbox.Checked = false;
+
+                    SetupLimitDiv.Visible = false;
+                    SetupLimit.Checked = false;
                 }
                 if (IPSpecialAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = true;
                     viewableOnlyCheckbox.Checked = false;
+
+                    SetupLimitDiv.Visible = true;
                 }
 
                }
@@ -536,9 +554,11 @@ namespace Chase_IRF
         {
             try
             {
-                string strURL = filedownload.Value;
+                string strURL = filedownload.InnerText;
+                int FileSep = strURL.IndexOf(".");
+                string newFile = strURL.Substring(0, (FileSep)) + '_' + ItemNumber.Value + strURL.Substring(FileSep);
                 string filePath = Convert.ToString(ConfigurationManager.AppSettings["filepath"]);
-                string path = filePath + "/" + strURL;
+                string path = filePath + "/" + newFile;
                 WebClient req = new WebClient();
                 // req.DownloadFile(path, strURL);
                 HttpResponse response = HttpContext.Current.Response;
@@ -733,7 +753,7 @@ namespace Chase_IRF
                 int printondemandvendor = 0;
                 string webviewable = "";
                 decimal prefpackquantity = 0;
-                string printrequesttype = "";
+                string printrequesttype = "N";
                 string printjts = "";
                 string printcostcenter = "";
                 string printbuscase = "";
@@ -750,6 +770,11 @@ namespace Chase_IRF
                 string userid = Session["UserName"] != null ? Convert.ToString(Session["UserName"]) : "";
                 string comments = "";
                 string deleted = "";
+
+                if(SetupLimit.Checked == true)
+                {
+                    printrequesttype = "Y";
+                }
 
                 //  Set Item Deleted CheckBox
                 if (CheckDelete.Checked == true)
@@ -1086,7 +1111,7 @@ namespace Chase_IRF
                             {
                                 fileNameApplication = System.IO.Path.GetFileName(filedate.FileName);
                             }
-                            int BusinessRuleId = dc.NewBusinessRule(itemnumber, oneboxid, businessrule, fileNameApplication, newFile, submittinguser);
+                            int BusinessRuleId = dc.NewBusinessRule(itemnumber, oneboxid, businessrule, fileNameApplication, newFile, submittinguser, Notes.InnerText);
                         }
                     }
 
