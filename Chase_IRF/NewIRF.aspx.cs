@@ -27,6 +27,7 @@ namespace Chase_IRF
                 //Set Cache History
                 Response.Cache.SetCacheability(HttpCacheability.NoCache);
                 Response.Cache.SetExpires(DateTime.Now);
+                Session["FileUpload"] = null;
                 //Check Validation - Decrypt and Decode Parameters
                 string encryptionkey = "ChaseIRFKey";
                 string Validatedencrypted = Request.QueryString["Validated"];
@@ -35,7 +36,7 @@ namespace Chase_IRF
                 string idencrypted = Request.QueryString["userid"];
                 var id = Spritz.EPIDecrypt(idencrypted, encryptionkey);
 
-                SetupLimitDiv.Visible = false;
+                //SetupLimitDiv.Visible = false;
                 btnSubmit.EnableViewState = false;
                 SubmitterName.Value = Session["fullname"] != null ? Convert.ToString(Session["fullname"]) : "";
                 SubmitterEmailID.Value = Session["EmailId"] != null ? Convert.ToString(Session["EmailId"]) : "";
@@ -62,8 +63,8 @@ namespace Chase_IRF
                 LowWaterPoint.Value = string.Empty;
                 OneBoxID.Value = string.Empty;
                 SelectBool.SelectedValue = string.Empty;
-                
-                StarterBoxQuantity.Value = string.Empty;                
+
+                StarterBoxQuantity.Value = string.Empty;
                 ExpireDate.Text = string.Empty;
                 DateToBeAdded.Text = string.Empty;
                 DateToBeRemoved.Text = string.Empty;
@@ -75,6 +76,9 @@ namespace Chase_IRF
                 IPAriba.Checked = false;
                 viewableOnlyCheckbox.Checked = false;
                 viewableOnlyCheckbox.Visible = true;
+                OrderLimitIntervalDropDownList.SelectedValue = string.Empty;
+                distributionDiv.Visible = false;
+                UploadDiv.Visible = false;
                 if (IPAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Visible = true;
@@ -175,7 +179,7 @@ namespace Chase_IRF
                         {
                             SelectItemOwnerName.Disabled = true;
                         }
-                        else 
+                        else
                         {
                             SelectItemOwnerName.Disabled = false;
                         }
@@ -213,7 +217,7 @@ namespace Chase_IRF
                                 thisQOH = QOHdr[0].ToString();
                             }
                         }
-                        catch {  }
+                        catch { }
 
                         decimal QOH = 0;
                         try
@@ -242,8 +246,8 @@ namespace Chase_IRF
                             Quantity.Disabled = true;
                             if (ItemType == "replaceditem" || ItemType == "copieditem")
                             {
-                               //ItemNumber.Value = "x_" + ItemNumber.Value.ToString();
-                                ItemNumber.Value =  ItemNumber.Value.ToString();
+                                //ItemNumber.Value = "x_" + ItemNumber.Value.ToString();
+                                ItemNumber.Value = ItemNumber.Value.ToString();
                                 ItemDescription.Disabled = false;
                                 UofM.Disabled = false;
                                 Quantity.Disabled = false;
@@ -261,7 +265,7 @@ namespace Chase_IRF
                         PrimaryVendor.Value = dt.Rows[0].ItemArray[20].ToString();
                         ProdCost.Value = dt.Rows[0].ItemArray[13].ToString();
                         RetailPrice.Value = dt.Rows[0].ItemArray[14].ToString();
-
+                        OrderLimitIntervalDropDownList.SelectedValue = dt.Rows[0].ItemArray[41].ToString();
                         //  Truncate decimals from returned LowWaterPoint
                         string LowWtrTxt = dt.Rows[0].ItemArray[22].ToString();
                         int LowWtrPos = LowWtrTxt.IndexOf(".");
@@ -285,47 +289,51 @@ namespace Chase_IRF
                             viewableOnlyCheckbox.Disabled = false;
                         }
                         if (dt.Rows[0].ItemArray[19].ToString() == "O")
-                        { IPOneBox.Checked = true;
+                        {
+                            IPOneBox.Checked = true;
                             viewableOnlyCheckbox.Disabled = true;
                             viewableOnlyCheckbox.Checked = false;
                         }
                         if (dt.Rows[0].ItemArray[19].ToString() == "S")
-                        { IPSpecial.Checked = true;
+                        {
+                            IPSpecial.Checked = true;
                             viewableOnlyCheckbox.Disabled = true;
                             viewableOnlyCheckbox.Checked = false;
                         }
                         if (dt.Rows[0].ItemArray[19].ToString() == "P")
-                        { IPOneBoxAriba.Checked = true;
-                          viewableOnlyCheckbox.Disabled = false;
+                        {
+                            IPOneBoxAriba.Checked = true;
+                            viewableOnlyCheckbox.Disabled = false;
                         }
                         if (dt.Rows[0].ItemArray[19].ToString() == "T")
-                        { IPSpecialAriba.Checked = true;
+                        {
+                            IPSpecialAriba.Checked = true;
                             viewableOnlyCheckbox.Disabled = true;
                             viewableOnlyCheckbox.Checked = false;
                         }
 
                         //  Set Viewable only CheckBox
                         if (dt.Rows[0].ItemArray[18].ToString() == "Y")
-                        { 
-                            viewableOnlyCheckbox.Checked = true; 
+                        {
+                            viewableOnlyCheckbox.Checked = true;
                         }
 
-                        if (dt.Rows[0].ItemArray[19].ToString() == "A" || dt.Rows[0].ItemArray[19].ToString() == "P" || dt.Rows[0].ItemArray[19].ToString() == "T")
-                        {
-                            SetupLimitDiv.Visible = true;
-                            if (dt.Rows[0].ItemArray[40].ToString() == "Y")
-                            {
-                                SetupLimit.Checked = true;
-                            }
-                            else if (dt.Rows[0].ItemArray[40].ToString() == "N")
-                            {
-                                SetupLimit.Checked = false;
-                            }
-                        }
-                        else
-                        {
-                            SetupLimitDiv.Visible = false;
-                        }
+                        //if (dt.Rows[0].ItemArray[19].ToString() == "A" || dt.Rows[0].ItemArray[19].ToString() == "P" || dt.Rows[0].ItemArray[19].ToString() == "T")
+                        //{
+                        //    SetupLimitDiv.Visible = true;
+                        //    if (dt.Rows[0].ItemArray[40].ToString() == "Y")
+                        //    {
+                        //        SetupLimit.Checked = true;
+                        //    }
+                        //    else if (dt.Rows[0].ItemArray[40].ToString() == "N")
+                        //    {
+                        //        SetupLimit.Checked = false;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    SetupLimitDiv.Visible = false;
+                        //}
 
                         if (ItemType != "replaceditem")
                         {
@@ -390,7 +398,8 @@ namespace Chase_IRF
                         if ((CheckDateStr != "1900-01-01") && (ItemType != "replaceditem"))
                         {
                             ExpireDate.Text = CheckDateStr.Substring(5, 2) + "/" + CheckDateStr.Substring(8, 2) + "/" + CheckDateStr.Substring(0, 4);
-                        } else
+                        }
+                        else
                         {
                             ExpireDate.Text = string.Empty;
                         }
@@ -407,8 +416,8 @@ namespace Chase_IRF
                         }
 
                         //  Special Distribution Delivery Date (uses ArtworokReleseDate)
-                       // int FirstSlash;
-                       // int SecondSlash;
+                        // int FirstSlash;
+                        // int SecondSlash;
                         //CheckDateStr = dt.Rows[0].ItemArray[44].ToString();
                         //FirstSlash = CheckDateStr.IndexOf("/");
                         //SecondSlash = CheckDateStr.Substring(FirstSlash + 1).IndexOf("/");
@@ -423,7 +432,7 @@ namespace Chase_IRF
                         //{
                         //    SPDDay = "0" + SPDDay.Trim();
                         //}
-                       // CheckDateStr = SPDMonth + "/" + SPDDay + "/" + SPDYear;
+                        // CheckDateStr = SPDMonth + "/" + SPDDay + "/" + SPDYear;
                         //if ((CheckDateStr != "01/01/1900") && (ItemType != "replaceditem"))
                         //{
                         //    SpecDistDelivery.Text = CheckDateStr;
@@ -440,13 +449,26 @@ namespace Chase_IRF
                         //MaxOrderQuantity.Value = dt.Rows[0].ItemArray[39].ToString();
 
                         DistributionRuleText.Value = dt.Rows[0].ItemArray[63].ToString();
-                        Notes.Value = dt.Rows[0].ItemArray[67].ToString();
+                        //Notes.Value = dt.Rows[0].ItemArray[68].ToString();
+                        if (dt.Rows[0].ItemArray[68].ToString().Equals("PBusinessR"))
+                        {
+                            PerBusinessRule.Checked = true;
+                            distributionDiv.Visible = true;
+                            UploadDiv.Visible = false;
+                        }
+                        else if (dt.Rows[0].ItemArray[68].ToString().Equals("PCustomL"))
+                        {
+                            PerCustomList.Checked = true;
+                            distributionDiv.Visible = false;
+                            UploadDiv.Visible = true;
+                        }
+
                         if ((!string.IsNullOrWhiteSpace(dt.Rows[0].ItemArray[64].ToString())) && (ItemType != "replaceditem"))
                         {
                             //RulesFile.Value = dt.Rows[0].ItemArray[64].ToString();
                             filedownload.InnerText = dt.Rows[0].ItemArray[64].ToString();
                             string filePath = Convert.ToString(ConfigurationManager.AppSettings["filepath"]);
-                           // filedownload.HRef = filedownload.Value;
+                            // filedownload.HRef = filedownload.Value;
                         }
 
                     }
@@ -469,6 +491,25 @@ namespace Chase_IRF
 
             if (IsPostBack)
             {
+                if (Session["FileUpload"] == null && distributionrule.HasFile)
+                {
+                    Session["FileUpload"] = distributionrule;
+                    distributionruleLabel.InnerText = distributionrule.FileName; // get the name 
+                }
+                // This condition will occur on next postbacks        
+                else if (Session["FileUpload"] != null && (!distributionrule.HasFile))
+                {
+                    distributionrule = (FileUpload)Session["FileUpload"];
+                    distributionruleLabel.InnerText = distributionrule.FileName;
+                }
+                //  when Session will have File but user want to change the file 
+                // i.e. wants to upload a new file using same FileUpload control
+                // so update the session to have the newly uploaded file
+                else if (distributionrule.HasFile)
+                {
+                    Session["FileUpload"] = distributionrule;
+                    distributionruleLabel.InnerText = distributionrule.FileName;
+                }
                 int itemownerReload = Convert.ToInt32(SelectItemOwnerName.Value.ToString());
                 if (itemownerReload != 0)
                 {
@@ -495,48 +536,61 @@ namespace Chase_IRF
                 {
                     specifyQuantityandDate.Attributes["style"] = "display:none";
                     StarterBoxQuantity.Value = string.Empty;
-                            ExpireDate.Text = string.Empty;
+                    ExpireDate.Text = string.Empty;
                 }
                 if (IPAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = false;
 
-                    SetupLimitDiv.Visible = true;
+                    //SetupLimitDiv.Visible = true;
                 }
                 if (IPOneBox.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = true;
                     viewableOnlyCheckbox.Checked = false;
 
-                    SetupLimitDiv.Visible = false;
-                    SetupLimit.Checked = false;
+                    //SetupLimitDiv.Visible = false;
+                    //SetupLimit.Checked = false;
                 }
                 if (IPOneBoxAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = false;
 
-                    SetupLimitDiv.Visible = true;
+                    //SetupLimitDiv.Visible = true;
                 }
                 if (IPSpecial.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = true;
                     viewableOnlyCheckbox.Checked = false;
 
-                    SetupLimitDiv.Visible = false;
-                    SetupLimit.Checked = false;
+                    //SetupLimitDiv.Visible = false;
+                    //SetupLimit.Checked = false;
                 }
                 if (IPSpecialAriba.Checked == true)
                 {
                     viewableOnlyCheckbox.Disabled = true;
                     viewableOnlyCheckbox.Checked = false;
 
-                    SetupLimitDiv.Visible = true;
+                    //SetupLimitDiv.Visible = true;
                 }
 
-               }
-
+                if (PerBusinessRule.Checked == true)
+                {
+                    distributionDiv.Visible = true;
+                    UploadDiv.Visible = false;
+                }
+                else if (PerCustomList.Checked == true)
+                {
+                    distributionDiv.Visible = false;
+                    UploadDiv.Visible = true;
+                }
+                else
+                {
+                    distributionDiv.Visible = false;
+                    UploadDiv.Visible = false;
+                }
+            }
         }
-
 
         //protected void IPSpecial_SelectedIndexChanged(object sender, EventArgs e)
         //{
@@ -606,12 +660,24 @@ namespace Chase_IRF
             }
 
             //When Item purpose is left blank
-           if (IPAriba.Checked==false && IPOneBox.Checked==false && IPOneBoxAriba.Checked==false && IPSpecial.Checked==false)
+            if (IPAriba.Checked == false && IPOneBox.Checked == false && IPOneBoxAriba.Checked == false && IPSpecial.Checked == false)
             {
                 ScriptManager.RegisterStartupScript(Page, this.GetType(), "alert", string.Format("alert('{1}', '{0}');", "Item Purpose", "Please select an item purpose."), true);
                 IsError = true;
             }
-           
+
+            //if (PerBusinessRule.Checked == true && DistributionRuleText.Value.ToString().Trim().Length == 0)
+            //{
+            //    ScriptManager.RegisterStartupScript(Page, this.GetType(), "alert", string.Format("alert('{1}', '{0}');", "Item Owner", "Please Specify Business Rule."), true);
+            //    IsError = true;
+            //}
+
+            //if (PerCustomList.Checked == true && (distributionruleLabel.InnerText.Trim().Length == 0 && filedownload.InnerHtml.Trim().Length == 0 && !distributionrule.HasFile))
+            //{
+            //    ScriptManager.RegisterStartupScript(Page, this.GetType(), "alert", string.Format("alert('{1}', '{0}');", "Item Owner", "Please upload a custom list."), true);
+            //    IsError = true;
+            //}
+
             // Only proceed if no erros are found
             if (IsError == false)
             {
@@ -639,11 +705,19 @@ namespace Chase_IRF
                 string productgroup = SelectGroup.Value;
                 string businessrule = DistributionRuleText.Value;
                 //Save distribution rule attachments in preferred path
-                var filedate = Request.Files["distributionrule"];
+                var filedata = Request.Files["distributionrule"];
                 string newFile = string.Empty;
-                if (filedate != null && filedate.ContentLength > 0)
+                if (Session["FileUpload"] != null || (distributionrule.HasFile))
                 {
-                    string fileNameApplication = System.IO.Path.GetFileName(filedate.FileName);
+                    if (distributionrule.HasFile)
+                    {
+                        filedata = distributionrule.PostedFile;
+                    }
+                    else
+                    {
+                        filedata = (HttpPostedFile)Session["FileUpload"];
+                    }
+                    string fileNameApplication = System.IO.Path.GetFileName(filedata.FileName);
                     //  string fileExtensionApplication = System.IO.Path.GetExtension(fileNameApplication);
 
                     int FileSep = fileNameApplication.IndexOf(".");
@@ -653,7 +727,7 @@ namespace Chase_IRF
 
                     if (fileNameApplication != String.Empty)
                     {
-                        filedate.SaveAs(Path.Combine(filePath, newFile));
+                        filedata.SaveAs(Path.Combine(filePath, newFile));
                     }
                 }
                 string businessRuleFile = newFile;
@@ -754,7 +828,7 @@ namespace Chase_IRF
                 string webviewable = "";
                 decimal prefpackquantity = 0;
                 string printrequesttype = "N";
-                string printjts = "";
+                string printjts = OrderLimitIntervalDropDownList.SelectedValue; ;
                 string printcostcenter = "";
                 string printbuscase = "";
                 string creativeagency = "";
@@ -771,10 +845,10 @@ namespace Chase_IRF
                 string comments = "";
                 string deleted = "";
 
-                if(SetupLimit.Checked == true)
-                {
-                    printrequesttype = "Y";
-                }
+                //if(SetupLimit.Checked == true)
+                //{
+                //    printrequesttype = "Y";
+                //}
 
                 //  Set Item Deleted CheckBox
                 if (CheckDelete.Checked == true)
@@ -793,8 +867,9 @@ namespace Chase_IRF
 
                 //  Set Item Purpose from Radio Button Group
                 if (IPAriba.Checked == true)
-                { manufactured = "A";
-                  viewableOnlyCheckbox.Visible = true;
+                {
+                    manufactured = "A";
+                    viewableOnlyCheckbox.Visible = true;
                 }
                 if (IPOneBox.Checked == true)
                 {
@@ -803,14 +878,16 @@ namespace Chase_IRF
                     viewableOnlyCheckbox.Visible = false;
                 }
                 if (IPSpecial.Checked == true)
-                { manufactured = "S";
+                {
+                    manufactured = "S";
                     viewableOnlyCheckbox.Checked = false;
-                  viewableOnlyCheckbox.Visible = false;
+                    viewableOnlyCheckbox.Visible = false;
                     //SpecDistDelivery.Visible = true;
                 }
                 if (IPOneBoxAriba.Checked == true)
-                { manufactured = "P";
-                  viewableOnlyCheckbox.Visible = true;
+                {
+                    manufactured = "P";
+                    viewableOnlyCheckbox.Visible = true;
                 }
                 if (IPSpecialAriba.Checked == true)
                 {
@@ -824,7 +901,7 @@ namespace Chase_IRF
 
                 //  Ariba and special Distribution to Ariba
                 //  if ((manufactured == "A") || (manufactured == "T"))
-                if (manufactured == "A") 
+                if (manufactured == "A")
                 {
                     if ((itemdescription != null && itemdescription != String.Empty) &&
                         (costctr != null && costctr != String.Empty) &&
@@ -866,7 +943,7 @@ namespace Chase_IRF
                         (itemlength > 0) &&
                         (itemwidth > 0) &&
                         (itemheight > 0) &&
-                        (businessrule != null && businessrule != string.Empty) || (businessRuleFile !=null && businessRuleFile != string.Empty) &&
+                        (businessrule != null && businessrule != string.Empty) || (businessRuleFile != null && businessRuleFile != string.Empty) &&
                         (oneboxid != null && oneboxid != String.Empty) &&
                         ((starteritem == "N") ||
                         (starteritem == "Y") &&
@@ -1104,14 +1181,17 @@ namespace Chase_IRF
                     if (UID >= 1)
                     {
                         DataClass dc = new DataClass();
-                        if (!string.IsNullOrEmpty(businessrule) || !string.IsNullOrEmpty(newFile) || (filedate != null && filedate.ContentLength > 0))
+                        if (!string.IsNullOrEmpty(businessrule) || !string.IsNullOrEmpty(newFile) || (filedata != null && filedata.ContentLength > 0))
                         {
                             string fileNameApplication = "";
-                            if (filedate != null && filedate.ContentLength > 0)
+                            if (filedata != null && filedata.ContentLength > 0)
                             {
-                                fileNameApplication = System.IO.Path.GetFileName(filedate.FileName);
+                                fileNameApplication = System.IO.Path.GetFileName(filedata.FileName);
                             }
-                            int BusinessRuleId = dc.NewBusinessRule(itemnumber, oneboxid, businessrule, fileNameApplication, newFile, submittinguser, Notes.InnerText);
+                            string ruleType = PerBusinessRule.Checked == true ? "PBusinessR" : (PerCustomList.Checked == true ? "PCustomL" : "");
+                            //string notesText = Notes.InnerText;
+                            string notesText = string.Empty;
+                            int BusinessRuleId = dc.NewBusinessRule(itemnumber, oneboxid, businessrule, fileNameApplication, newFile, submittinguser, notesText, ruleType);
                         }
                     }
 
@@ -1273,7 +1353,7 @@ namespace Chase_IRF
         private void fillUnitOfMeasure()
         {
             DataClass newevent = new DataClass();
-            DataTable UOMDropdownList = newevent.GetClientCodes(1,"UnitOfMeasure");
+            DataTable UOMDropdownList = newevent.GetClientCodes(1, "UnitOfMeasure");
             UofM.Items.Clear();
             UofM.DataSource = UOMDropdownList;
             UofM.DataTextField = "DisplayText";
