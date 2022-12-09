@@ -43,9 +43,22 @@
             width: 10%;
             border-radius: 25px;
         }
+
+        input:disabled::-webkit-input-placeholder { /* WebKit browsers */
+            color:    #eee;
+        }
+        input:disabled:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:    #eee;
+        }
+        input:disabled::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color:    #eee;
+        }
+        input:disabled:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color:    #eee;
+        }
     </style>
 
-    
+
 
     <form data-toggle="validator" id="frmUserAdministration" role="form" enctype="multipart/form-data" runat="server">
         <div class="newIrf-wrap">
@@ -97,11 +110,11 @@
 
                                 <div class="field">
                                     <label for="inputName" class="control-label">User Name:<span style="color: red">*</span></label>
-                                    <input type="text" runat="server" class="form-control formField" id="txtUserID" required="required" />
+                                    <input type="text" runat="server" class="form-control formField" id="txtUserID" required="required" placeholder="(Sample Format: JohnD)" />
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">Password:<span style="color: red">*</span></label>
-                                    <input type="text" runat="server" class="form-control formField" id="txtPassword" required="required" />
+                                    <input type="password" runat="server" class="form-control formField" id="txtPassword" required="required" />
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">First Name:<span style="color: red">*</span></label>
@@ -118,7 +131,7 @@
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">Phone Number:</label>
-                                    <input type="text" runat="server" class="form-control formField" id="txtPhone" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" maxlength="10" />
+                                    <input type="number" runat="server" class="form-control formField" id="txtPhone" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" maxlength="10" />
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">Manager:</label>
@@ -127,8 +140,9 @@
                                 <div class="field">
 
                                     <label for="itemownername" class="control-label">Item Owner Number:</label>
-                                    <select class="dropdownIRF" id="ddlownerlist" multiple="false" runat="server">
-                                    </select>
+                                    <input type="number" runat="server" class="form-control formField" id="txtItemOwnerNumber" />
+                                    <%--Below drop down is disabled--%>
+                                    <select class="dropdownIRF" id="ddlownerlist" multiple="false" runat="server" visible="false"></select>
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">Title:</label>
@@ -140,7 +154,8 @@
                                     <input type="checkbox" runat="server" class="form-control checkbox" id="IsAdminCheckbox" />
                                 </div>
 
-                                <br /><br />
+                                <br />
+                                <br />
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -154,7 +169,7 @@
                                                             <button id="btnSubmit" class="btn-primary btnIRF" style="width: 300px; border-radius: 25px" onserverclick="btnSubmit_Click" runat="server">Submit</button>
                                                         </td>
                                                         <td style="width: 10%; align-items: flex-end">
-                                                            <button id="btnCancel" class="btn-primary btnIRF" style="border-radius: 25px; width: 25%" onclick="btnCancel_Click" onclientclick="return ConfirmOnDelete();" type="button" runat="server">Cancel</button>
+                                                            <button id="btnCancel" class="btn-primary btnIRF" style="border-radius: 25px; width: 25%" onserverclick="btnCancel_Click" runat="server">Cancel</button>
                                                         </td>
                                                     </tr>
                                                 </table>

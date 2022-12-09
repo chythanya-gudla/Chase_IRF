@@ -57,6 +57,7 @@ namespace Chase_IRF
                         string isAdmin = dt.Rows[0].ItemArray[2].ToString();
                         Session["isAdmin"] = isAdmin;
                         Session["userid"] = id;
+                        Session["UpdatedUser"] = userid.Text;
                         var idencrypted = Spritz.EPIEncrypt(id, encryptionkey);
                         string idencryptedencoded = System.Web.HttpUtility.UrlEncode(idencrypted);
                         var validatedencrypted = Spritz.EPIEncrypt(DateTime.Now.ToString(), encryptionkey);
