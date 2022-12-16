@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">Password:<span style="color: red">*</span></label>
-                                    <input type="password" runat="server" class="form-control formField" id="txtPassword" required="required" />
+                                    <input type="text" runat="server" class="form-control formField" id="txtPassword" required="required" />
                                 </div>
                                 <div class="field">
                                     <label for="inputName" class="control-label">First Name:<span style="color: red">*</span></label>

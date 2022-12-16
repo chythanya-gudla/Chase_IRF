@@ -221,13 +221,17 @@ namespace Chase_IRF
             IsAdminCheckbox.Disabled = true;
             hdnuserid.Value = Convert.ToString(id);
             txtUserID.Value = dt.Rows[0].ItemArray[0].ToString();
-            //txtPassword.Value = Spritz.EPIDecrypt(dt.Rows[0].ItemArray[1].ToString(), encryptionkey);
+
+            //TODO
             txtPassword.Value = dt.Rows[0].ItemArray[1].ToString();
+            txtPassword.Attributes["type"] = "password";
+
+
             txtFirstName.Value = dt.Rows[0].ItemArray[2].ToString();
             txtLastName.Value = dt.Rows[0].ItemArray[3].ToString();
             txtEmail.Value = dt.Rows[0].ItemArray[4].ToString();
             txtPhone.Value= dt.Rows[0].ItemArray[5].ToString();
-            IsAdminCheckbox.Checked = dt.Rows[0].ItemArray[7].ToString().ToUpper().Trim().Equals("TRUE")? true : false;
+            IsAdminCheckbox.Checked = dt.Rows[0].ItemArray[9].ToString().ToUpper().Trim().Equals("TRUE")? true : false;
             txtManager.Value = dt.Rows[0].ItemArray[10].ToString();
             txtTitle.Value = dt.Rows[0].ItemArray[11].ToString();
             txtItemOwnerNumber.Value= dt.Rows[0].ItemArray[13].ToString();
@@ -366,6 +370,11 @@ namespace Chase_IRF
                 btndeleteuser.Enabled= true;
                 btnaddnewuser.Disabled = false;
                 btnCancel.Disabled = false;
+
+                int id = Convert.ToInt32(ddluserlist.SelectedValue);
+                DataClass getuserdetails = new DataClass();
+                DataTable dt = getuserdetails.GetUserDetails(id);
+                txtPassword.Value = dt.Rows[0].ItemArray[1].ToString();
             }
             else 
             {
