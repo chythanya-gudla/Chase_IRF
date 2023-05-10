@@ -372,7 +372,7 @@ namespace Chase_IRF
                 //               "Item " + ItemNumber + " Submitted", emailbodystring);
                 emailresult = DC.NewItemNotification(clientid, ItemNumber, ItemOwner,
                                SbmFirstName + " " + SbmLastName, "Reports@epiinc.com", OwnEMail,
-                               "darcy.c.hall@chase.com,madison.merz@chase.com", "ChaseAMTeam@epiinc.com",
+                               "madison.merz@chase.com", "ChaseAMTeam@epiinc.com",
                                "Item " + ItemNumber + " Submitted", emailbodystring);
                 return emailresult;
             }
