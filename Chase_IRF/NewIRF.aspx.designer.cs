@@ -150,24 +150,6 @@ namespace Chase_IRF
         protected global::System.Web.UI.WebControls.RadioButton IPSpecialAriba;
 
         /// <summary>
-        /// SetupLimitDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SetupLimitDiv;
-
-        /// <summary>
-        /// SetupLimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox SetupLimit;
-
-        /// <summary>
         /// SelectGroup control.
         /// </summary>
         /// <remarks>
@@ -175,33 +157,6 @@ namespace Chase_IRF
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect SelectGroup;
-
-        /// <summary>
-        /// DistributionRuleText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText DistributionRuleText;
-
-        /// <summary>
-        /// Notes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Notes;
-
-        /// <summary>
-        /// filedownload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor filedownload;
 
         /// <summary>
         /// CostCenter control.
@@ -312,6 +267,78 @@ namespace Chase_IRF
         protected global::System.Web.UI.HtmlControls.HtmlInputText LowWaterPoint;
 
         /// <summary>
+        /// PerBusinessRule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton PerBusinessRule;
+
+        /// <summary>
+        /// PerCustomList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton PerCustomList;
+
+        /// <summary>
+        /// distributionDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl distributionDiv;
+
+        /// <summary>
+        /// DistributionRuleText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea DistributionRuleText;
+
+        /// <summary>
+        /// UploadDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UploadDiv;
+
+        /// <summary>
+        /// distributionrule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload distributionrule;
+
+        /// <summary>
+        /// distributionruleLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl distributionruleLabel;
+
+        /// <summary>
+        /// filedownload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor filedownload;
+
+        /// <summary>
         /// OneBoxID control.
         /// </summary>
         /// <remarks>
@@ -409,6 +436,15 @@ namespace Chase_IRF
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText MaxOrderQuantity;
+
+        /// <summary>
+        /// OrderLimitIntervalDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList OrderLimitIntervalDropDownList;
 
         /// <summary>
         /// SelectSubCategory control.

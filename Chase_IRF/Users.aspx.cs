@@ -52,6 +52,7 @@ namespace Chase_IRF
                 txtManager.Disabled = true;
                 txtTitle.Disabled = true;
                 IsAdminCheckbox.Disabled = true;
+                txtItemOwnerNumber.Disabled = true;
                 ddlownerlist.Disabled = true;
                 //}
                 //else
@@ -124,16 +125,11 @@ namespace Chase_IRF
                 bool IsActive = true;
                 bool IsAdmin = false;
                 if(IsAdminCheckbox.Checked == true)
-                    {
-                        IsAdmin = true;
-                    }
-                else
-                {
-                     IsAdmin = false;
-                }
-                int ItemOwnerNumber = Convert.ToInt32(ddlownerlist.Value);
+                    IsAdmin = true;
+                //int ItemOwnerNumber = Convert.ToInt32(ddlownerlist.Value);
+                int ItemOwnerNumber = Convert.ToInt32(txtItemOwnerNumber.Value);
                 string altuserid = "";// AltUserId.Value;
-                string upduserid = "";// upduserid.Value;
+                string upduserid = Session["UpdatedUser"].ToString();
                 string comments = "";// comments.Value;
 
                 DataClass newuser = new DataClass();
@@ -172,6 +168,7 @@ namespace Chase_IRF
                     txtPhone.Disabled = false;
                     txtManager.Disabled = false;
                     txtTitle.Disabled = false;
+                    txtItemOwnerNumber.Disabled = false;
                     txtUserID.Value = "";
                     txtFirstName.Value = "";
                     txtLastName.Value = "";
@@ -179,7 +176,8 @@ namespace Chase_IRF
                     txtEmail.Value = "";
                     txtPhone.Value = "";
                     txtManager.Value = "";
-                    ddlownerlist.Value = "";
+                    txtItemOwnerNumber.Value = "";
+                    IsAdminCheckbox.Checked = false;
                     txtTitle.Value = "";
                     FillUserDDL();
                     FillOwnerDDL();
@@ -219,18 +217,24 @@ namespace Chase_IRF
             txtManager.Disabled = true;
             txtTitle.Disabled = true;
             ddlownerlist.Disabled = true;
+            txtItemOwnerNumber.Disabled = true;
             IsAdminCheckbox.Disabled = true;
             hdnuserid.Value = Convert.ToString(id);
             txtUserID.Value = dt.Rows[0].ItemArray[0].ToString();
-            //txtPassword.Value = Spritz.EPIDecrypt(dt.Rows[0].ItemArray[1].ToString(), encryptionkey);
+
+            //TODO
             txtPassword.Value = dt.Rows[0].ItemArray[1].ToString();
+            txtPassword.Attributes["type"] = "password";
+
+
             txtFirstName.Value = dt.Rows[0].ItemArray[2].ToString();
             txtLastName.Value = dt.Rows[0].ItemArray[3].ToString();
             txtEmail.Value = dt.Rows[0].ItemArray[4].ToString();
             txtPhone.Value= dt.Rows[0].ItemArray[5].ToString();
+            IsAdminCheckbox.Checked = dt.Rows[0].ItemArray[9].ToString().ToUpper().Trim().Equals("TRUE")? true : false;
             txtManager.Value = dt.Rows[0].ItemArray[10].ToString();
             txtTitle.Value = dt.Rows[0].ItemArray[11].ToString();
-            ddlownerlist.Value= dt.Rows[0].ItemArray[13].ToString();
+            txtItemOwnerNumber.Value= dt.Rows[0].ItemArray[13].ToString();
 
            
         }
@@ -245,6 +249,7 @@ namespace Chase_IRF
             ddlownerlist.SelectedIndex = 0;
             ddlownerlist.Items.Clear();
             ddlownerlist.Disabled = false;
+            txtItemOwnerNumber.Value = "";
             txtUserID.Value = "";
             txtFirstName.Value = "";
             txtLastName.Value = "";
@@ -262,6 +267,7 @@ namespace Chase_IRF
             txtManager.Disabled = false;
             txtTitle.Disabled = false;
             IsAdminCheckbox.Disabled = false;
+            txtItemOwnerNumber.Disabled = false;
             FillOwnerDDL();
             btnedituser.Disabled = true;
             btndeleteuser.Enabled= false;
@@ -287,6 +293,7 @@ namespace Chase_IRF
                 txtTitle.Disabled = true;
                 ddlownerlist.Disabled = true;
                 IsAdminCheckbox.Disabled = true;
+                txtItemOwnerNumber.Disabled = true;
                 btnSubmit.Disabled = true;
                 btndeleteuser.Enabled= true;
                 int id = Convert.ToInt32(ddluserlist.SelectedValue);
@@ -301,42 +308,42 @@ namespace Chase_IRF
                 txtPhone.Value = dt.Rows[0].ItemArray[5].ToString();
                 txtManager.Value = dt.Rows[0].ItemArray[10].ToString();
                 txtTitle.Value = dt.Rows[0].ItemArray[11].ToString();
-                ddlownerlist.Value = dt.Rows[0].ItemArray[13].ToString();
+                txtItemOwnerNumber.Value = dt.Rows[0].ItemArray[13].ToString();
             }
-            
             else
             { 
                 ClearInputs(Page.Controls);
-            FillUserDDL();
-            FillOwnerDDL();
-            ddluserlist.Enabled = true;
-            ddlownerlist.Disabled = true;
-            btnSubmit.Disabled = true;
-            btnCancel.Disabled = false;
-            btnedituser.Disabled = false;
-            btndeleteuser.Enabled= true;
-            btnaddnewuser.Disabled = false;
-            txtUserID.Disabled = true;
-            txtPassword.Disabled = true;
-            txtFirstName.Disabled = true;
-            txtLastName.Disabled = true;
-            txtEmail.Disabled = true;
-            txtPhone.Disabled = true;
-            txtManager.Disabled = true;
-            txtTitle.Disabled = true;
-            IsAdminCheckbox.Disabled = true;
-            ddluserlist.SelectedIndex = 0;
-            ddlownerlist.SelectedIndex = 0;
-            txtUserID.Value = "";
-            txtPassword.Value = "";
-            txtFirstName.Value = "";
-            txtLastName.Value = "";
-            txtEmail.Value = "";
-            txtPhone.Value = "";
-            txtManager.Value = "";
-            txtTitle.Value = "";
-            IsAdminCheckbox.Checked = false;
-
+                FillUserDDL();
+                FillOwnerDDL();
+                ddluserlist.Enabled = true;
+                ddlownerlist.Disabled = true;
+                btnSubmit.Disabled = true;
+                btnCancel.Disabled = false;
+                btnedituser.Disabled = false;
+                btndeleteuser.Enabled= true;
+                btnaddnewuser.Disabled = false;
+                txtUserID.Disabled = true;
+                txtPassword.Disabled = true;
+                txtFirstName.Disabled = true;
+                txtLastName.Disabled = true;
+                txtEmail.Disabled = true;
+                txtPhone.Disabled = true;
+                txtManager.Disabled = true;
+                txtTitle.Disabled = true;
+                txtItemOwnerNumber.Disabled = true;
+                IsAdminCheckbox.Disabled = true;
+                ddluserlist.SelectedIndex = 0;
+                ddlownerlist.SelectedIndex = 0;
+                txtItemOwnerNumber.Value = "";
+                txtUserID.Value = "";
+                txtPassword.Value = "";
+                txtFirstName.Value = "";
+                txtLastName.Value = "";
+                txtEmail.Value = "";
+                txtPhone.Value = "";
+                txtManager.Value = "";
+                txtTitle.Value = "";
+                IsAdminCheckbox.Checked = false;
             }
         }
 
@@ -359,9 +366,15 @@ namespace Chase_IRF
                 ddlownerlist.Disabled = false;
                 btnSubmit.Disabled = false;
                 IsAdminCheckbox.Disabled = false;
+                txtItemOwnerNumber.Disabled = false;
                 btndeleteuser.Enabled= true;
                 btnaddnewuser.Disabled = false;
                 btnCancel.Disabled = false;
+
+                int id = Convert.ToInt32(ddluserlist.SelectedValue);
+                DataClass getuserdetails = new DataClass();
+                DataTable dt = getuserdetails.GetUserDetails(id);
+                txtPassword.Value = dt.Rows[0].ItemArray[1].ToString();
             }
             else 
             {
@@ -378,6 +391,7 @@ namespace Chase_IRF
                 txtTitle.Disabled = true;
                 ddlownerlist.Disabled = true;
                 IsAdminCheckbox.Disabled = true;
+                txtItemOwnerNumber.Disabled = true;
                 btnSubmit.Disabled = true;
                 btndeleteuser.Enabled= true;
                 btnaddnewuser.Disabled = false;
@@ -420,6 +434,7 @@ namespace Chase_IRF
                 txtTitle.Disabled = true;
                 ddlownerlist.Disabled = true;
                 IsAdminCheckbox.Disabled = true;
+                txtItemOwnerNumber.Disabled = true;
                 btnSubmit.Disabled = true;
                 btnedituser.Disabled = false;
                 btnaddnewuser.Disabled = false;
@@ -440,6 +455,7 @@ namespace Chase_IRF
             txtManager.Value = "";
             ddluserlist.Enabled = true;
             ddlownerlist.Value = "";
+            txtItemOwnerNumber.Value = "";
             txtTitle.Value = "";
             IsAdminCheckbox.Checked = false;
             FillUserDDL();

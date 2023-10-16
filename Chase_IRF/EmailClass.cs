@@ -21,19 +21,23 @@ namespace Chase_IRF
                 MailMessage newmail = new MailMessage();
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
-                client.Host = "smtpa.epiinc.com";
+                client.Host = "10.0.21.10";
+                //client.Host = "smtpa.epiinc.com";
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.Credentials = new System.Net.NetworkCredential("NoReply@epiinc.com", "bB20131220B");
-                //client.UseDefaultCredentials = true;
+                //client.Credentials = new System.Net.NetworkCredential("NoReply@epiinc.com", "bB20131220B");
+                client.UseDefaultCredentials = true;
 
 
                 //Add Fields and Send
                 newmail.From = (new MailAddress("NoReply@epiinc.com"));
-                newmail.To.Add(new MailAddress(ToAddress));
-                if ((ccAddress != "") && (ccAddress != null))
+                foreach (var address in ToAddress.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    newmail.CC.Add(new MailAddress(ccAddress));
+                    newmail.To.Add(new MailAddress(address));
+                }
+                foreach (var ccaddress in ccAddress.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    newmail.CC.Add(new MailAddress(ccaddress));
                 }
                 if ((bccAddress != "") && (bccAddress != null))
                 {

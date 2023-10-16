@@ -1431,7 +1431,7 @@ namespace Chase_IRF
 
         //  Insert a New Business Rule  -------------------------------------------------------------------
         public int NewBusinessRule(string itemnumber, string oneboxid, string ruletext, string orgfile,
-                                   string epifile, string userid, string NoteText)
+                                   string epifile, string userid, string NoteText, string RuleType)
         {
             string encryptionkey = "ChaseIRFKey";
             string connStringencrypted = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
@@ -1450,6 +1450,7 @@ namespace Chase_IRF
             sqlcmd.Parameters.AddWithValue("@EPIFileName", epifile);
             sqlcmd.Parameters.AddWithValue("@UpdUser", userid);
             sqlcmd.Parameters.AddWithValue("@NoteText", NoteText);
+            sqlcmd.Parameters.AddWithValue("@RuleType", RuleType);
             var returnParameter = sqlcmd.Parameters.Add("@ID", SqlDbType.VarChar);
             returnParameter.Direction = ParameterDirection.ReturnValue;
 

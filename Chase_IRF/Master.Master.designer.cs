@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Chase_IRF {
-    
-    
-    public partial class Master {
-        
+namespace Chase_IRF
+{
+
+
+    public partial class Master
+    {
+
         /// <summary>
         /// head control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
         /// <summary>
         /// loggedInUser control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label loggedInUser;
-        
+
         /// <summary>
         /// HomePage control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor HomePage;
-        
+
         /// <summary>
         /// NewIRFPage control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor NewIRFPage;
-        
+
         /// <summary>
         /// UsersPage control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor UsersPage;
-        
+
         /// <summary>
         /// HelpPage control.
         /// </summary>
@@ -65,7 +67,16 @@ namespace Chase_IRF {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor HelpPage;
-        
+
+        /// <summary>
+        /// A1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
+
         /// <summary>
         /// ReportsPage control.
         /// </summary>

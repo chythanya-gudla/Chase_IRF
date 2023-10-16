@@ -69,6 +69,7 @@
                         <li><a role="presentation" id="UsersPage" href="Users.aspx" runat="server">Users</a></li>
                         <%} %>
                         <li><a id="HelpPage" href="\uploads\IRF_HELP_Page.pdf" target="_blank" runat="server">Help</a></li>
+                        <li><a id="A1" href="About.aspx" runat="server">About</a></li>
                         <li><a role="presentation" id="ReportsPage" href="Reports.aspx"  runat="server">Reports</a></li>
                         <li class="login">
                             <a data-toggle="modal" id="btnLogout" href="UserLogin.aspx" style="background-color: gray; color: white" onclick="return confirm('You might lose any unsaved information.Are you sure you want to logout?');">Log out</a>

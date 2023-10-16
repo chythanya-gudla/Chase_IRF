@@ -242,27 +242,27 @@
                                     Item Purpose:<span class="required"> *</span><br />
                                     <span style="font-size: 80%">Please Select One</span></label>
 
-                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" ID="IPAriba">
+                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" ID="IPAriba">
                                 </asp:RadioButton>
                                 <label for="IPAriba" style="width: 75px">Ariba</label>
 
-                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" ID="IPOneBox"></asp:RadioButton>
+                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" ID="IPOneBox"></asp:RadioButton>
                                 <label for="IPOneBox" style="width: 90px">One Box</label>
 
-                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" ID="IPOneBoxAriba"></asp:RadioButton>
+                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" ID="IPOneBoxAriba"></asp:RadioButton>
                                 <label for="IPOneBoxAriba" style="width: 250px">One Box and Ariba</label>
 
-                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" ID="IPSpecial"></asp:RadioButton>
+                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" ID="IPSpecial"></asp:RadioButton>
                                 <label for="IPSpecial" style="width: 150px">Inventory Only</label>
 
-                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" visible="false" ID="IPSpecialAriba">
+                                <asp:RadioButton GroupName="ItemPurpose" style="background-color: transparent" runat="server" class="inlineBlockEle" visible="false" ID="IPSpecialAriba">
                                 </asp:RadioButton><label for="IPSpecialAriba" style="width: 210px; visibility: hidden">Special Distribution and Ariba</label>
 
                             </div>
-                            <div class="field" runat="server" id="SetupLimitDiv">
+                            <%--<div class="field" runat="server" id="SetupLimitDiv">
                                 <label for="inputName">Setup Order Limit:</label>
                                 <input type="checkbox" id="SetupLimit" class="chechbox" runat="server" />
-                            </div>
+                            </div>--%>
 
                             <%--                            <div class="field" >
                                 <label for="inputName" class="control-label" style="visibility: hidden">
@@ -275,76 +275,110 @@
                                 <label for="inputName" class="control-label">Item Category:</label>
                                 <select id="SelectGroup" class="dropdownIRF" runat="server"></select>
                             </div>
+
+                            <div class="field">
+                                <label for="inputName" class="control-label" style="margin-bottom: 16px;">Cost Center:</label>
+                                <input type="text" runat="server" class="form-control formField" id="CostCenter" />
+                            </div>
+                            <div class="field">
+                                <label for="inputName" class="control-label">Unit Of Measure:</label>
+                                <select id="UofM" class="dropdownIRF" runat="server"></select>
+                            </div>
+                            <div class="field">
+                                <label for="inputName" style="height: 32px;" class="control-label">Quantity per Unit of Measure:</label>
+                                <input type="text" runat="server" placeholder="0-9 only" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" class="form-control formField" id="Quantity" />
+                            </div>
+                            <div class="field">
+                                <label for="inputName" style="height: 32px;" class="control-label">Production Cost per Unit of Measure in US Dollars:</label>
+                                <div class="dollar">
+                                    <input type="text" style="width: 50%" runat="server" placeholder="0.0000" onkeypress="return isNumberKey(event)" id="ProdCost" />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="inputName" style="vertical-align: bottom;" class="control-label">Unit Dimensions<br>(L*W*H of finished package) In Inches:</label>
+
+                                <input id="UnitLength" title="UnitLength" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
+                                <input id="UnitWidth" title="UnitWidth" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
+                                <input id="UnitHeight" title="UnitHeight" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
+                            </div>
+                            <div class="field">
+                                <label for="inputName" style="height: 32px;" class="control-label">Weight Of Item In Pounds:</label>
+                                <input title="ItemWeight" placeholder="0.000" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ItemWeight" />
+                            </div>
+                            <div class="field">
+                                <label for="inputName" style="height: 32px;" class="control-label">Total Quantity Delivering to EPI:</label>
+                                <input type="text" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ExpectedQuantity" />
+                            </div>
+                            <div class="field">
+                                <label for="inputName" class="control-label">Expected Arrival Date:</label>
+                                <asp:TextBox ID="ExpectedArrival" class="datepickerIRF" runat="server" placeholder="mm/dd/yyyy"></asp:TextBox>
+                            </div>
+                            <div class="field">
+                                <label for="inputName" class="control-label">Item Vendor:</label>
+                                <select class="dropdownIRF" id="PrimaryVendor" runat="server"></select>
+                            </div>
+                            <div class="field">
+                                <label for="inputName" style="height: 32px;" class="control-label">Low Water Point:</label>
+                                <input title="LowWaterPoint" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="LowWaterPoint" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="inlineBlockEle">DISTRIBUTION RULE</h3>
+                        <br />
+                        <h5></h5>
+                        <br />
+                        <div class="form-group user-form">
                             <div class="field">
                                 <label for="inputName" class="control-label">
-                                    Distribution Rule:<br />
-                                    <span style="font-size: 80%">Specify geography, branch type,<br />
-                                        quantity per location,<br />
-                                        multicultural preference,<br />
-                                        or upload a custom list below.</span></label>
-                                <input type="text" runat="server" class="form-control formField" id="DistributionRuleText" style="width: 450px;" />
+                                    Please Select One:<span class="required"> *</span><br />
+                                    <span style="font-size: 80%"></span>
+                                </label>
 
+                                <asp:RadioButton GroupName="DistributionType" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" ID="PerBusinessRule">
+                                </asp:RadioButton>
+                                <label for="PerBusinessRule">Per Business Rule</label>
+
+                                <asp:RadioButton GroupName="DistributionType" style="background-color: transparent" runat="server" class="inlineBlockEle" AutoPostBack="true" ID="PerCustomList"></asp:RadioButton>
+                                <label for="PerCustomList">Per Custom List</label>
                             </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label">Notes:</label>
-                                <textarea id="Notes" class="form-control formField" runat="server" maxlength="255" style="display: initial;"></textarea>
+
+                            <div id="distributionDiv" runat="server">
+                                <div class="field">
+                                    <label for="inputName" class="control-label">
+                                        Business Rule:<br />
+                                        <span style="font-size: 80%">Specify geography, branch type,<br />
+                                            quantity per location,<br />
+                                            or multicultural preference.</span></label>
+                                    <textarea type="text" runat="server" id="DistributionRuleText" style="width: 450px;" ></textarea>
+
+                                </div>
+                                <%--<div class="field">
+                                    <label for="inputName" class="control-label">Notes:</label>
+                                    <textarea id="Notes" class="form-control formField" runat="server" maxlength="255" style="display: initial;"></textarea>
+                                </div>--%>
                             </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label" style="width: 25%;">Upload a Custom List:</label>
-                                <input type="file" id="distributionrule" name="distributionrule" style="height: 40px; border-radius: 0px;"/>
-                            </div>
-                            <div class="field">
-                                <label for="inputName" class="control-label">Uploaded Custom List (if any):</label>
-                                <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" readonly="readonly" disabled="disabled" />
-                                <input type="text" id="RulesFile" style="text-align: left;" readonly="readonly" disabled="disabled" />
-                                <%-- <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" disabled="disabled"/>
+
+                            <div id="UploadDiv" runat="server">
+                                <div class="field">
+                                    <label for="inputName" class="control-label" style="width: 25%;">Upload a Custom List:</label>
+                                    <%--<input type="file" id="distributionrule" name="distributionrule" style="height: 40px; border-radius: 0px;"/>--%>
+                                    <asp:FileUpload ID="distributionrule" runat="server" style="height: 40px; border-radius: 0px;"></asp:FileUpload>
+                                    <label type="text" id="distributionruleLabel" runat="server" style="text-align: left;" />
+                                </div>
+                                <div class="field">
+                                    <label for="inputName" class="control-label">Uploaded Custom List (if any):</label>
+                                    <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" readonly="readonly" disabled="disabled" />
+                                    <input type="text" id="RulesFile" style="text-align: left;" readonly="readonly" disabled="disabled" />
+                                    <%-- <a id="filedownload" runat="server" style="text-align: left;" onserverclick="Download_Click" disabled="disabled"/>
                                 <input type="text" id="RulesFile" runat="server" style="text-align: left;" readonly="readonly" disabled="disabled"/>--%>
+                                </div>
                             </div>
-                        <div class="field">
-                            <label for="inputName" class="control-label" style="margin-bottom: 16px;">Cost Center:</label>
-                            <input type="text" runat="server" class="form-control formField" id="CostCenter" />
-                        </div>
-                        <div class="field">
-                            <label for="inputName" class="control-label">Unit Of Measure:</label>
-                            <select id="UofM" class="dropdownIRF" runat="server"></select>
-                        </div>
-                        <div class="field">
-                            <label for="inputName" style="height: 32px;" class="control-label">Quantity per Unit of Measure:</label>
-                            <input type="text" runat="server" placeholder="0-9 only" onkeydown="return (!((event.keyCode>=65 && event.keyCode <= 95) || event.keyCode >= 106) && event.keyCode!=32);" class="form-control formField" id="Quantity" />
-                        </div>
-                        <div class="field">
-                            <label for="inputName" style="height: 32px;" class="control-label">Production Cost per Unit of Measure in US Dollars:</label>
-                            <div class="dollar">
-                                <input type="text" style="width: 50%" runat="server" placeholder="0.0000" onkeypress="return isNumberKey(event)" id="ProdCost" />
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label for="inputName" style="vertical-align: bottom;" class="control-label">Unit Dimensions(L*W*H of finished package) In Inches:</label>
-
-                            <input id="UnitLength" title="UnitLength" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
-                            <input id="UnitWidth" title="UnitWidth" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
-                            <input id="UnitHeight" title="UnitHeight" onkeypress="return isNumberKey(event)" placeholder="0.000" min="0" maxlength="10" class="icon" runat="server" />
-                        </div>
-                        <div class="field">
-                            <label for="inputName" style="height: 32px;" class="control-label">Weight Of Item In Pounds:</label>
-                            <input title="ItemWeight" placeholder="0.000" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ItemWeight" />
-                        </div>
-                        <div class="field">
-                            <label for="inputName" style="height: 32px;" class="control-label">Total Quantity Delivering to EPI:</label>
-                            <input type="text" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="ExpectedQuantity" />
-                        </div>
-                        <div class="field">
-                            <label for="inputName" class="control-label">Expected Arrival Date:</label>
-                            <asp:TextBox ID="ExpectedArrival" class="datepickerIRF" runat="server" placeholder="mm/dd/yyyy"></asp:TextBox>
-                        </div>
-                        <div class="field">
-                            <label for="inputName" class="control-label">Item Vendor:</label>
-                            <select class="dropdownIRF" id="PrimaryVendor" runat="server"></select>
-                        </div>
-                        <div class="field">
-                            <label for="inputName" style="height: 32px;" class="control-label">Low Water Point:</label>
-                            <input title="LowWaterPoint" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" runat="server" class="form-control formField" id="LowWaterPoint" />
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -405,7 +439,7 @@
                                 <asp:TextBox ID="DateToBeRemoved" runat="server" class="datepickerIRF" placeholder="mm/dd/yyyy"></asp:TextBox>
                             </div>
                             <div class="field">
-                                <label for="inputName" class="control-label">Existing Item Number being Replaced (If applicable):</label>
+                                <label for="inputName" class="control-label">Existing Item Number being Replaced<br>(If applicable):</label>
                                 <input type="text" runat="server" class="form-control formField" id="SupersededItem" />
                             </div>
                             <div class="field">
@@ -417,6 +451,16 @@
                             <div class="field">
                                 <label for="inputName" style="height: 32px;" class="control-label">Maximum Order Quantity:</label>
                                 <input type="text" runat="server" placeholder="0-9 Only" onkeypress="return isNumberKey(event)" min="0" maxlength="10" class="form-control formField" id="MaxOrderQuantity" />
+
+                                <label for="inputName" style="height: 32px;" class="control-label text-right">Maximum Order Quantity Interval<br>(if applicable):</label>
+                                <asp:DropDownList id="OrderLimitIntervalDropDownList" runat="server" style="border: 5px; width: 15%; border-radius: 25px; height: 37px;">
+                                    <asp:ListItem value="None">Not Applicable</asp:ListItem>
+                                    <asp:ListItem value="Day">Day</asp:ListItem>
+                                    <asp:ListItem value="Week">Week</asp:ListItem>
+                                    <asp:ListItem value="Month">Month</asp:ListItem>
+                                    <asp:ListItem value="Year">Year</asp:ListItem>
+                                    <asp:ListItem value="Lifetime">Lifetime</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                             <div class="field">
                                 <label for="inputName" class="control-label">Ariba Sub-Category(Select one):</label>

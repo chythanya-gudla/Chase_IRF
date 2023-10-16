@@ -9,7 +9,7 @@ namespace Chase_IRF
 {
     public class Emails
     {
-
+        //test comment
         public int CreateEmailNotification(string itemnumber, string sendto)
         {
             int clientid = 1;
@@ -56,6 +56,7 @@ namespace Chase_IRF
                 string ArtworkReleaseDate = R["ArtworkReleaseDate"].ToString();
                 string ExpectedArrival = R["ExpectedArrival"].ToString();
                 string ExpectedQuantity = R["ExpectedQuantity"].ToString();
+                string PrintJTS = R["PrintJTS"].ToString();
 
                 //Fix nulls and get ItemOwner  ---------------------
                 int ItemOwner;
@@ -286,6 +287,11 @@ namespace Chase_IRF
                 DecimalPos = RetailPrice.IndexOf(".");
                 RetailPrice = "$ " + RetailPrice.Substring(0, DecimalPos + 3);
 
+                if (PrintJTS == "")
+                {
+                    PrintJTS = "None";
+                }
+
 
                 string emailbodystring =
 "<!doctype html public \"-//w3c//dtd html 4.0 transitional//en\"> " +
@@ -311,7 +317,7 @@ namespace Chase_IRF
 "<td colspan=\"2\">Description: " + ItemDescription + "</td></tr> " +
 "<tr><td>Item purpose: " + ItemPurpose + "</td> " +
 "<td colspan=\"2\">Expected Arrival Date: " + ExpectedArrival + "</td></tr> " +
-"<tr><td colspan=\"3\">Item category: " + ProductGroup + "</tr> " +
+//"<tr><td colspan=\"3\">Item category: " + ProductGroup + "</tr> " +
 "<tr><td colspan=\"3\">&nbsp;</td></tr> " +
 "<tr><td>Cost Center: " + ItemCostCtr + "</td> " +
 "<td>Production Cost : " + StockUOM + " $" + LastCost + "</td> " +
@@ -326,14 +332,14 @@ namespace Chase_IRF
 "<tr><td colspan=\"3\">Vendor: " + VendorName + "</tr> " +
 "<tr><td colspan=\"3\">Expected Quantity: " + ExpectedQuantity + "</tr> " +
 "<tr><td colspan=\"3\">&nbsp;</td></tr> " +
-"<tr><td colspan=\"3\"><b>Business Rules</b><td></tr> ";
+"<tr><td colspan=\"3\"><b>Distribution Rules</b><td></tr> ";
 
                 //  Get Business Rules 
                 DataTable BR = new DataTable();
                 BR = DC.GetBusinessRules(ItemNumber);
                 foreach (DataRow B in BR.Rows)
                 {
-                    emailbodystring += "<tr><td colspan=\"3\">" + B[3].ToString() + "</td></tr> ";
+                    emailbodystring += "<tr><td colspan=\"3\">Business Rule: " + B[3].ToString() + "</td></tr> ";
                     if (B[4].ToString() != "" && B[4].ToString() != null)
                     {
                         emailbodystring += "<tr><td colspan=\"3\">Custom List: " + B[4].ToString() + "</td></tr> ";
@@ -354,14 +360,19 @@ namespace Chase_IRF
                 "<td>Existing item being replaced: " + Supersede + "</td></tr> " +
                 "<tr><td>Date to be removed: " + ExpireDate + "</td> " +
                 "<td>Maximum order quantity: " + MaxOrdQuantity + "</td> " +
-                "<td>Ariba sub-category: " + ProductSubGroup + "</td></tr>' " +
+                "<td>Maximum Order Quantity Interval: " + PrintJTS + "</td></tr>' " +
+                "<tr><td colspan=\"3\">Ariba sub-category: " + ProductSubGroup + "</td></tr> " +
                 "</table></body></html> ";
 
 
                 //  Over Ride submitter's email to Darcy and send Bcc to AM Team
+                //emailresult = DC.NewItemNotification(clientid, ItemNumber, ItemOwner,
+                //               SbmFirstName + " " + SbmLastName, "Reports@epiinc.com", OwnEMail,
+                //               "darcy.c.hall@chase.com", "ChaseAMTeam@epiinc.com",
+                //               "Item " + ItemNumber + " Submitted", emailbodystring);
                 emailresult = DC.NewItemNotification(clientid, ItemNumber, ItemOwner,
                                SbmFirstName + " " + SbmLastName, "Reports@epiinc.com", OwnEMail,
-                               "darcy.c.hall@chase.com", "ChaseAMTeam@epiinc.com",
+                               "madison.merz@chase.com", "ChaseAMTeam@epiinc.com",
                                "Item " + ItemNumber + " Submitted", emailbodystring);
                 return emailresult;
             }
